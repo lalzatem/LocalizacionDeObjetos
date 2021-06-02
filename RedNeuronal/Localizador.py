@@ -4,6 +4,7 @@ import cv2 as cv
 from keras.models import Sequential
 from keras.layers.core import Dense
 img = cv.imread('cubos.png')
+img = cv.cvtColor(img,cv.COLOR_BGR2RGB)
 plt.imshow(img)
 plt.show(block=False)
 cv.imwrite("localizador2.png",img)
@@ -85,7 +86,7 @@ for i in range (0,24):
 font = cv.FONT_HERSHEY_SIMPLEX
 img1 = cv.imread('lienzo.png',1)
 img2 = cv.imread('localizador2.png')
-img2 = cv.cvtColor(img2,cv.COLOR_BGR2RGB)
+
 for i in range (0,24):
     for j in range (0,31):
         pred = modelo.predict(np.array([ventanas[i,j]])).round()
@@ -116,7 +117,7 @@ for i in range(0,len(ctns)):
 
 img1 = cv.imread('lienzo.png')
 img2 = cv.imread('localizador2.png')
-img2 = cv.cvtColor(img2,cv.COLOR_BGR2RGB)
+
 for i in range (0,24):
     for j in range (0,31):
         pred = modelo.predict(np.array([ventanas[i,j]])).round()
